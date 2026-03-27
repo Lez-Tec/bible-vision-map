@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bible Visual Explorer</title>
+<meta name="description" content="Discover the structure, themes, and timeline of Scripture through an interactive visual journey.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Book Selector Sidebar -->
+<div id="sidebar-overlay" class="sidebar-overlay" onclick="closeSidebar()"></div>
+<div id="sidebar" class="sidebar">
+  <div class="sidebar-header">
+    <h3>📖 Select a Book</h3>
+    <button onclick="closeSidebar()" class="sidebar-close">&times;</button>
+  </div>
+  <input type="text" id="sidebar-search" class="sidebar-search" placeholder="Search books..." oninput="filterSidebarBooks()">
+  <div class="sidebar-content" id="sidebar-content"></div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="#" onclick="showHome()" class="nav-brand">
+      <div class="nav-icon">📖</div>
+      <span>Bible Visual Explorer</span>
+    </a>
+    <div class="nav-links">
+      <a href="javascript:void(0)" onclick="goToSection('explorer')" class="nav-link">Books</a>
+      <a href="javascript:void(0)" onclick="goToSection('timeline')" class="nav-link">Timeline</a>
+      <a href="javascript:void(0)" onclick="goToSection('structure')" class="nav-link">Structure</a>
+      <a href="javascript:void(0)" onclick="goToSection('themes')" class="nav-link">Themes</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Main content container -->
+<div id="app">
+
+<!-- HOME PAGE -->
+<div id="page-home">
+  <main class="container">
+    <!-- Hero -->
+    <div class="hero">
+      <h1><span class="text-primary italic">Bible Visual</span><br>Explorer</h1>
+      <p class="hero-sub">Discover the structure, themes, and timeline of Scripture through an interactive visual journey. Making the Bible easy to understand for everyone.</p>
+      <div class="hero-actions">
+        <button onclick="navigateToChapter('GEN',1)" class="btn btn-primary">📖 Start Reading ›</button>
+        <a href="javascript:void(0)" onclick="goToSection('explorer')" class="btn btn-outline">Explore Books</a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card"><div class="stat-icon">📖</div><span class="stat-value">66</span><span class="stat-label">Books</span></div>
+      <div class="stat-card"><div class="stat-icon">📄</div><span class="stat-value">1,189</span><span class="stat-label">Chapters</span></div>
+      <div class="stat-card"><div class="stat-icon">👥</div><span class="stat-value">40</span><span class="stat-label">Authors</span></div>
+      <div class="stat-card"><div class="stat-icon">🕐</div><span class="stat-value">~1,500 yrs</span><span class="stat-label">Time Span</span></div>
+    </div>
+
+    <!-- Quick nav -->
+    <div class="quick-nav">
+      <a href="javascript:void(0)" onclick="goToSection('timeline')" class="btn btn-outline btn-sm">📅 Timeline</a>
+      <a href="javascript:void(0)" onclick="goToSection('structure')" class="btn btn-outline btn-sm">📖 Structure</a>
+      <a href="javascript:void(0)" onclick="goToSection('themes')" class="btn btn-outline btn-sm">💡 Themes</a>
+    </div>
+
+    <!-- Explorer -->
+    <div id="explorer" class="section">
+      <div class="section-header">
+        <h2>Bible Explorer</h2>
+        <p>Browse all 66 books. Click on any book to learn more.</p>
+      </div>
+      <div class="search-bar">
+        <input type="text" id="book-search" placeholder="🔍 Search books..." oninput="filterBooks()">
+      </div>
+      <div class="genre-filter" id="genre-filter"></div>
+      <p class="book-count" id="book-count">Showing 66 of 66 books</p>
+      <div id="ot-section"></div>
+      <div id="nt-section"></div>
+    </div>
+
+    <!-- Timeline -->
+    <div id="timeline" class="section section-border">
+      <div class="section-header">
+        <h2>Biblical Timeline</h2>
+        <p>Journey through the major events of Scripture, from Creation to the promise of Christ's return.</p>
+      </div>
+      <div id="timeline-content" class="timeline-content"></div>
+    </div>
+
+    <!-- Structure -->
+    <div id="structure" class="section section-border">
+      <div class="section-header">
+        <h2>Bible Structure</h2>
+        <p>The Bible is organized into two main testaments, each with distinct sections.</p>
+      </div>
+      <div id="structure-content"></div>
+    </div>
+
+    <!-- Themes -->
+    <div id="themes" class="section section-border">
+      <div class="section-header">
+        <h2>Major Themes</h2>
+        <p>Throughout the Bible, certain themes appear repeatedly, revealing God's character and His plan for humanity.</p>
+      </div>
+      <div id="themes-content"></div>
+    </div>
+  </main>
+</div>
+
+<!-- BOOK OVERVIEW PAGE -->
+<div id="page-book" style="display:none">
+  <div class="container">
+    <div class="page-nav">
+      <button onclick="openSidebar()" class="btn-icon" title="Select Book">📖</button>
+      <button onclick="showHome()" class="back-link">← Library</button>
+    </div>
+    <div id="book-detail"></div>
+  </div>
+</div>
+
+<!-- CHAPTER READER PAGE -->
+<div id="page-reader" style="display:none">
+  <header class="reader-header">
+    <div class="reader-header-inner">
+      <div class="reader-left">
+        <button onclick="openSidebar()" class="btn-icon" title="Select Book">📖</button>
+        <button onclick="showBookOverview(currentBook)" class="back-link" id="reader-back-link">← Book</button>
+      </div>
+      <div class="reader-nav" id="reader-nav"></div>
+    </div>
+  </header>
+  <main class="reader-main">
+    <div id="reader-content"></div>
+    <div id="reader-bottom-nav"></div>
+  </main>
+  <footer class="reader-footer">World English Bible (WEB) · Public Domain</footer>
+</div>
+
+</div>
+
+<!-- Footer -->
+<footer id="main-footer" class="main-footer">
+  <div class="container">
+    <div class="footer-bar"></div>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">📖 <span>Bible Visual Explorer</span></div>
+        <p class="footer-desc">Making the Bible accessible and easy to understand through interactive visualizations.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="javascript:void(0)" onclick="goToSection('explorer')">Bible Explorer</a>
+        <a href="javascript:void(0)" onclick="goToSection('timeline')">Biblical Timeline</a>
+        <a href="javascript:void(0)" onclick="goToSection('structure')">Bible Structure</a>
+        <a href="javascript:void(0)" onclick="goToSection('themes')">Major Themes</a>
+      </div>
+      <div>
+        <h4>Bible at a Glance</h4>
+        <div class="footer-stat"><span>Books</span><span class="mono">66</span></div>
+        <div class="footer-stat"><span>Chapters</span><span class="mono">1,189</span></div>
+        <div class="footer-stat"><span>Verses</span><span class="mono">31,102</span></div>
+        <div class="footer-stat"><span>Authors</span><span class="mono">~40</span></div>
+        <div class="footer-stat"><span>Time Span</span><span class="mono">~1,500 years</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Made with ❤️ for God's glory</p>
+      <p class="footer-small">Scripture quotations are from various translations for educational purposes.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

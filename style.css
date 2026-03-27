@@ -1,0 +1,236 @@
+/* ═══════════════ RESET & BASE ═══════════════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg: hsl(222,35%,10%);
+  --fg: hsl(40,20%,95%);
+  --card: hsl(222,30%,14%);
+  --card-fg: hsl(40,20%,95%);
+  --primary: hsl(40,90%,55%);
+  --primary-fg: hsl(222,35%,10%);
+  --secondary: hsl(222,25%,18%);
+  --secondary-fg: hsl(40,20%,85%);
+  --muted: hsl(222,25%,18%);
+  --muted-fg: hsl(220,15%,55%);
+  --accent: hsl(222,25%,22%);
+  --border: hsl(220,20%,20%);
+  --destructive: hsl(0,84%,60%);
+  --radius: 0.75rem;
+}
+body{background:var(--bg);color:var(--fg);font-family:'Geist Sans',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6}
+h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;text-wrap:balance}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
+.mono{font-family:'Geist Mono',monospace}
+.text-primary{color:var(--primary)}
+.italic{font-style:italic}
+.data-mono{font-family:'Geist Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;opacity:0.5}
+
+/* ═══════════════ BUTTONS ═══════════════ */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--radius);font-size:14px;font-weight:500;border:none;cursor:pointer;transition:all 0.2s}
+.btn-primary{background:var(--primary);color:var(--primary-fg)}
+.btn-primary:hover{opacity:0.9}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--fg)}
+.btn-outline:hover{background:var(--accent)}
+.btn-sm{padding:8px 16px;font-size:13px}
+.btn-icon{background:none;border:none;cursor:pointer;font-size:20px;padding:4px}
+.back-link{background:none;border:none;color:var(--muted-fg);font-size:14px;cursor:pointer;transition:color 0.2s}
+.back-link:hover{color:var(--fg)}
+
+/* ═══════════════ NAVBAR ═══════════════ */
+.navbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);background:rgba(15,20,30,0.8);border-bottom:1px solid var(--border)}
+.navbar-inner{max-width:1200px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--fg)}
+.nav-icon{width:32px;height:32px;border-radius:8px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:16px}
+.nav-links{display:flex;gap:8px}
+.nav-link{padding:6px 14px;border-radius:8px;font-size:13px;color:var(--muted-fg);transition:all 0.2s}
+.nav-link:hover{color:var(--fg);background:var(--accent)}
+@media(max-width:600px){.nav-links{display:none}}
+
+/* ═══════════════ HERO ═══════════════ */
+.hero{text-align:center;padding:60px 0 40px}
+.hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:700;line-height:1.1}
+.hero-sub{margin-top:16px;color:var(--muted-fg);max-width:540px;margin-left:auto;margin-right:auto;font-size:15px}
+.hero-actions{margin-top:24px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+
+/* ═══════════════ STATS ═══════════════ */
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:48px}
+@media(min-width:768px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+.stat-card{border-radius:var(--radius);padding:20px;border:1px solid var(--border);text-align:center;background:linear-gradient(to bottom,rgba(200,170,60,0.08),rgba(200,170,60,0.02))}
+.stat-icon{width:40px;height:40px;margin:0 auto 12px;border-radius:8px;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:20px}
+.stat-value{display:block;font-family:'Geist Mono',monospace;font-size:1.5rem;font-weight:700}
+.stat-label{display:block;font-size:12px;color:var(--muted-fg);margin-top:4px}
+
+/* ═══════════════ QUICK NAV ═══════════════ */
+.quick-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:48px}
+
+/* ═══════════════ SECTIONS ═══════════════ */
+.section{scroll-margin-top:80px;padding-top:40px}
+.section-border{border-top:1px solid var(--border);margin-top:64px;padding-top:64px}
+.section-header{text-align:center;margin-bottom:48px}
+.section-header h2{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700}
+.section-header p{margin-top:16px;color:var(--muted-fg);max-width:540px;margin-left:auto;margin-right:auto}
+
+/* ═══════════════ SEARCH & FILTER ═══════════════ */
+.search-bar{max-width:400px;margin:0 auto 24px}
+.search-bar input{width:100%;padding:10px 16px;border-radius:var(--radius);background:var(--card);border:1px solid var(--border);color:var(--fg);font-size:14px;outline:none}
+.search-bar input:focus{box-shadow:0 0 0 2px var(--primary)}
+.genre-filter{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px}
+.genre-pill{padding:6px 14px;border-radius:8px;border:1px solid var(--border);font-size:12px;font-weight:500;cursor:pointer;transition:all 0.2s;background:transparent;color:var(--muted-fg)}
+.genre-pill:hover{background:var(--accent);color:var(--fg)}
+.genre-pill.active{background:var(--primary);color:var(--primary-fg);border-color:var(--primary)}
+.book-count{text-align:center;font-size:12px;color:var(--muted-fg);margin-bottom:24px}
+
+/* ═══════════════ BOOK GRID ═══════════════ */
+.testament-label{font-family:'Geist Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted-fg);margin-bottom:16px}
+.book-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:40px}
+@media(min-width:640px){.book-grid{grid-template-columns:repeat(7,1fr)}}
+@media(min-width:768px){.book-grid{grid-template-columns:repeat(10,1fr)}}
+@media(min-width:1024px){.book-grid{grid-template-columns:repeat(13,1fr)}}
+.book-card{aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:space-between;padding:8px;border-radius:var(--radius);border:1px solid rgba(255,255,255,0.06);cursor:pointer;transition:all 0.2s;text-align:center;position:relative;overflow:hidden}
+.book-card:hover{transform:scale(1.06) translateY(-2px)}
+.book-card .dot{width:6px;height:6px;border-radius:50%;align-self:flex-end;opacity:0.8}
+.book-card .abbr{font-family:'Geist Mono',monospace;font-size:12px;font-weight:700;letter-spacing:0.05em;flex:1;display:flex;align-items:center;justify-content:center}
+.book-card .name{font-size:8px;color:var(--muted-fg);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.book-card.ghosted{opacity:0.15;pointer-events:none}
+
+/* Genre colors */
+.genre-law{background:linear-gradient(to bottom,rgba(200,155,50,0.3),rgba(200,155,50,0.1))}.genre-law .dot{background:hsl(35,85%,55%)}.genre-law .abbr{color:hsl(35,85%,55%)}
+.genre-history{background:linear-gradient(to bottom,rgba(200,140,50,0.3),rgba(200,140,50,0.1))}.genre-history .dot{background:hsl(25,80%,55%)}.genre-history .abbr{color:hsl(25,80%,55%)}
+.genre-poetry{background:linear-gradient(to bottom,rgba(140,100,200,0.3),rgba(140,100,200,0.1))}.genre-poetry .dot{background:hsl(270,65%,65%)}.genre-poetry .abbr{color:hsl(270,65%,65%)}
+.genre-major-prophets{background:linear-gradient(to bottom,rgba(80,180,170,0.3),rgba(80,180,170,0.1))}.genre-major-prophets .dot{background:hsl(180,55%,50%)}.genre-major-prophets .abbr{color:hsl(180,55%,50%)}
+.genre-minor-prophets{background:linear-gradient(to bottom,rgba(80,170,140,0.3),rgba(80,170,140,0.1))}.genre-minor-prophets .dot{background:hsl(160,50%,50%)}.genre-minor-prophets .abbr{color:hsl(160,50%,50%)}
+.genre-gospels{background:linear-gradient(to bottom,rgba(200,170,50,0.3),rgba(200,170,50,0.1))}.genre-gospels .dot{background:hsl(40,90%,55%)}.genre-gospels .abbr{color:hsl(40,90%,55%)}
+.genre-acts{background:linear-gradient(to bottom,rgba(60,150,210,0.3),rgba(60,150,210,0.1))}.genre-acts .dot{background:hsl(200,70%,55%)}.genre-acts .abbr{color:hsl(200,70%,55%)}
+.genre-pauline{background:linear-gradient(to bottom,rgba(200,90,130,0.3),rgba(200,90,130,0.1))}.genre-pauline .dot{background:hsl(340,60%,60%)}.genre-pauline .abbr{color:hsl(340,60%,60%)}
+.genre-general{background:linear-gradient(to bottom,rgba(150,100,190,0.3),rgba(150,100,190,0.1))}.genre-general .dot{background:hsl(280,50%,60%)}.genre-general .abbr{color:hsl(280,50%,60%)}
+.genre-apocalyptic{background:linear-gradient(to bottom,rgba(200,80,80,0.3),rgba(200,80,80,0.1))}.genre-apocalyptic .dot{background:hsl(0,65%,58%)}.genre-apocalyptic .abbr{color:hsl(0,65%,58%)}
+
+/* ═══════════════ TIMELINE ═══════════════ */
+.timeline-content{max-width:700px;margin:0 auto}
+.era-block{margin-bottom:48px}
+.era-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.era-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.era-name{font-family:'Fraunces',serif;font-size:18px;font-weight:600;color:var(--primary)}
+.era-events{border-left:2px solid var(--border);margin-left:5px;padding-left:24px}
+.era-events .event-card{border-radius:var(--radius);background:var(--card);border:1px solid var(--border);padding:16px;margin-bottom:16px}
+.event-date{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;background:rgba(200,170,50,0.15);color:var(--primary);font-size:12px;font-weight:500;margin-bottom:8px}
+.event-title{font-family:'Fraunces',serif;font-size:16px;font-weight:600;color:var(--fg)}
+.event-ref{font-size:12px;color:var(--muted-fg);margin-top:4px}
+
+/* ═══════════════ STRUCTURE CARDS ═══════════════ */
+.structure-testament{margin-bottom:64px}
+.testament-header{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.testament-icon{width:48px;height:48px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:24px}
+.testament-title{font-size:1.5rem;font-weight:700}
+.testament-sub{font-size:14px;color:var(--muted-fg)}
+.genre-card{border-radius:var(--radius);background:var(--card);border:1px solid var(--border);padding:20px;margin-bottom:16px}
+.genre-card-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.genre-card-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.genre-card-title{font-family:'Fraunces',serif;font-size:16px;font-weight:600}
+.genre-card-count{font-size:12px;color:var(--muted-fg)}
+.genre-card-desc{font-size:14px;color:var(--muted-fg);line-height:1.6;margin-bottom:16px}
+.genre-card-books{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.genre-card-books span{padding:4px 10px;border-radius:8px;font-size:12px;background:var(--secondary);color:var(--secondary-fg)}
+.genre-bar-wrap{border-top:1px solid var(--border);padding-top:12px}
+.genre-bar-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted-fg);margin-bottom:6px}
+.genre-bar-label .val{font-family:'Geist Mono',monospace;color:var(--fg)}
+.genre-bar{height:6px;border-radius:99px;background:var(--secondary);overflow:hidden}
+.genre-bar-fill{height:100%;border-radius:99px}
+.divider-400{display:flex;align-items:center;gap:0;margin:40px 0}
+.divider-400 .line{flex:1;height:1px;background:var(--border)}
+.divider-400 .label{padding:8px 24px;border-radius:99px;border:1px solid var(--border);font-size:14px;color:var(--muted-fg)}
+.color-legend{border-radius:var(--radius);background:var(--card);border:1px solid var(--border);padding:24px}
+.color-legend h3{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;text-align:center;margin-bottom:8px}
+.color-legend .sub{font-size:14px;color:var(--muted-fg);text-align:center;margin-bottom:24px}
+.color-item{display:flex;align-items:center;gap:16px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.04);margin-bottom:16px}
+.color-item:last-child{border:none;margin:0;padding:0}
+.color-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+
+/* ═══════════════ THEME CARDS ═══════════════ */
+.themes-list{max-width:700px;margin:0 auto}
+.theme-card{border-radius:var(--radius);background:var(--card);border:1px solid var(--border);padding:24px;margin-bottom:20px}
+.theme-icon{width:48px;height:48px;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px;color:white}
+.theme-title{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:700;margin-bottom:8px}
+.theme-desc{font-size:14px;color:var(--muted-fg);line-height:1.6;margin-bottom:16px}
+.theme-verse{font-size:12px;color:var(--primary);margin-bottom:4px;cursor:pointer;text-decoration:underline;text-decoration-color:transparent;transition:all 0.2s;display:inline-block;width:100%}
+.theme-verse:hover{text-decoration-color:var(--primary);background:rgba(200,170,50,0.1);padding-left:8px;border-radius:4px}
+
+/* ═══════════════ BOOK OVERVIEW ═══════════════ */
+.page-nav{display:flex;align-items:center;gap:12px;padding:12px 0}
+.book-meta{margin-bottom:32px}
+.book-meta h1{font-size:clamp(2rem,5vw,3rem);font-weight:600;margin-top:8px}
+.book-stats{display:flex;gap:24px;margin-top:12px}
+.book-stat-val{font-family:'Geist Mono',monospace;font-size:1.25rem;font-weight:700}
+.book-stat-label{font-size:10px;text-transform:uppercase;letter-spacing:0.1em;opacity:0.5;margin-left:8px}
+.book-summary{border-radius:var(--radius);padding:24px;background:var(--card);border:1px solid var(--border);margin-bottom:32px}
+.book-summary h2{font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:12px}
+.book-summary p{color:var(--muted-fg);line-height:1.6;margin-bottom:16px}
+.book-summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;font-size:14px}
+.chapters-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:48px}
+@media(min-width:640px){.chapters-grid{grid-template-columns:repeat(8,1fr)}}
+@media(min-width:768px){.chapters-grid{grid-template-columns:repeat(10,1fr)}}
+.chapter-btn{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:var(--radius);font-family:'Geist Mono',monospace;font-size:14px;border:1px solid var(--border);background:var(--card);color:var(--muted-fg);cursor:pointer;transition:all 0.2s}
+.chapter-btn:hover{background:var(--accent);color:var(--fg);transform:scale(1.05)}
+
+/* ═══════════════ READER ═══════════════ */
+.reader-header{position:sticky;top:0;z-index:40;backdrop-filter:blur(16px);background:rgba(15,20,30,0.8);border-bottom:1px solid var(--border)}
+.reader-header-inner{max-width:640px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;justify-content:space-between}
+.reader-left{display:flex;align-items:center;gap:8px}
+.reader-nav{display:flex;align-items:center;gap:8px}
+.reader-nav button{background:none;border:none;color:var(--muted-fg);cursor:pointer;padding:6px;border-radius:6px;font-size:18px;transition:all 0.2s}
+.reader-nav button:hover{background:var(--accent);color:var(--fg)}
+.reader-nav .chapter-label{font-family:'Geist Mono',monospace;font-size:13px;padding:4px 12px;border-radius:6px;background:var(--secondary);color:var(--fg)}
+.reader-main{max-width:640px;margin:0 auto;padding:32px 16px}
+.reader-title{text-align:center;margin-bottom:40px}
+.reader-title h1{font-family:'Fraunces',serif;font-size:clamp(1.5rem,4vw,2rem);font-weight:600}
+.reader-title p{font-size:14px;color:var(--muted-fg);margin-top:4px}
+.verse-block{margin-bottom:32px}
+.verse-row{display:flex;align-items:flex-start;gap:16px}
+.verse-num{width:40px;height:40px;border-radius:50%;background:rgba(200,170,50,0.2);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;color:var(--primary);flex-shrink:0;margin-top:4px}
+.verse-content-col{flex:1}
+.verse-text{font-size:18px;line-height:1.7;padding-top:6px}
+.explanation-box{background:var(--card);border:1px solid var(--border);display:flex;align-items:flex-start;gap:12px;padding:16px 20px;border-radius:12px;margin-top:16px;box-shadow:0 4px 12px rgba(0,0,0,0.1)}
+.explanation-icon{font-size:18px;line-height:1.4;flex-shrink:0}
+.explanation-text{color:var(--muted-fg);font-size:15px;line-height:1.6}
+.reader-loading{text-align:center;padding:80px 0;color:var(--muted-fg)}
+.reader-error{text-align:center;padding:80px 0;color:var(--destructive)}
+.reader-error button{color:var(--primary);background:none;border:none;cursor:pointer;font-size:14px;margin-top:8px}
+.reader-bottom-nav{display:flex;justify-content:space-between;align-items:center;margin-top:64px;padding-top:24px;border-top:1px solid var(--border)}
+.reader-bottom-nav a,.reader-bottom-nav button{font-size:14px;color:var(--muted-fg);cursor:pointer;background:none;border:none;transition:color 0.2s}
+.reader-bottom-nav a:hover,.reader-bottom-nav button:hover{color:var(--fg)}
+.reader-footer{text-align:center;padding:24px;font-family:'Geist Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;opacity:0.5}
+
+/* ═══════════════ SIDEBAR ═══════════════ */
+.sidebar-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:90;opacity:0;pointer-events:none;transition:opacity 0.3s}
+.sidebar-overlay.open{opacity:1;pointer-events:auto}
+.sidebar{position:fixed;top:0;left:0;bottom:0;width:320px;max-width:85vw;background:var(--card);border-right:1px solid var(--border);z-index:100;transform:translateX(-100%);transition:transform 0.3s ease;display:flex;flex-direction:column}
+.sidebar.open{transform:translateX(0)}
+.sidebar-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border)}
+.sidebar-header h3{font-family:'Fraunces',serif;font-size:18px;font-weight:600}
+.sidebar-close{background:none;border:none;color:var(--muted-fg);font-size:24px;cursor:pointer}
+.sidebar-search{margin:12px 16px;padding:10px 14px;border-radius:var(--radius);background:var(--secondary);border:1px solid var(--border);color:var(--fg);font-size:14px;outline:none}
+.sidebar-content{flex:1;overflow-y:auto;padding:8px 16px 24px}
+.sidebar-testament{font-family:'Geist Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted-fg);padding:16px 0 8px}
+.sidebar-book{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:8px;cursor:pointer;transition:background 0.2s;font-size:14px}
+.sidebar-book:hover{background:var(--accent)}
+.sidebar-book.current{background:rgba(200,170,50,0.15);color:var(--primary)}
+.sidebar-book .ch-count{font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted-fg)}
+
+/* ═══════════════ FOOTER ═══════════════ */
+.main-footer{border-top:1px solid var(--border);margin-top:64px;background:rgba(255,255,255,0.02)}
+.main-footer .container{padding-top:48px;padding-bottom:48px}
+.footer-bar{height:4px;width:100%;border-radius:99px;background:linear-gradient(to right,hsl(35,85%,55%),hsl(270,65%,65%),hsl(0,65%,58%));margin-bottom:40px}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:768px){.footer-grid{grid-template-columns:1fr 1fr 1fr}}
+.footer-brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:18px;font-weight:600;margin-bottom:16px}
+.footer-desc{font-size:14px;color:var(--muted-fg);line-height:1.6}
+.main-footer h4{font-family:'Fraunces',serif;font-size:14px;font-weight:600;margin-bottom:16px}
+.main-footer nav a,.main-footer a{display:block;font-size:14px;color:var(--muted-fg);margin-bottom:10px;transition:color 0.2s}
+.main-footer nav a:hover,.main-footer a:hover{color:var(--fg)}
+.footer-stat{display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px}
+.footer-stat span:first-child{color:var(--muted-fg)}
+.footer-stat .mono{font-family:'Geist Mono',monospace;font-weight:500}
+.footer-bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--border);text-align:center}
+.footer-bottom p{font-size:14px;color:var(--muted-fg)}
+.footer-small{font-size:12px;opacity:0.6;margin-top:8px}
